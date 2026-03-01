@@ -1,5 +1,8 @@
 package operaciones;
 
-public interface IOperacionEmpleado {
+import java.util.List;
+import modelos.Empresa;
 
+public interface IOperacionEmpleado {
+    void mostrarEmpleados(List<Empresa> empresas);
 }

@@ -6,6 +6,7 @@ public class Empleado extends Empresa {
     private String documento;
     private String nombre;
     private double sueldoHora;
+    private Empresa empresa;  // Referencia a la empresa a la que pertenece
 
 
     public String getDocumento() {
@@ -25,6 +26,12 @@ public class Empleado extends Empresa {
     }
     public void setSueldoHora(double sueldoHora) {
         this.sueldoHora = sueldoHora;
+    }
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
     
     public Empleado() {

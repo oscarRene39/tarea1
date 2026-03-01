@@ -9,10 +9,18 @@ public class Empresa {
     private String nombre;
     private String direccion;
     private String ciudad;
-    private List<Empleado> empleados; 
+    private List<Empleado> Listempleados; 
 
     public Empresa() {
-        this.empleados = new ArrayList<>();
+        this.Listempleados = new ArrayList<>();
+    }
+
+    public Empresa(String nit, String nombre, String direccion, String ciudad) {
+        this.nit = nit;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.ciudad = ciudad;
+        this.Listempleados = new ArrayList<>();
     }
 
 
@@ -43,11 +51,14 @@ public class Empresa {
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
-    public List<Empleado> getEmpleados() {
-        return empleados;
+    public List<Empleado> getListempleados() {
+        return Listempleados;
     }
-    public void setEmpleados(List<Empleado> empleados) {
-        this.empleados = empleados;
+    public List<Empleado> getEmpleados() {
+        return Listempleados;
+    }
+    public void setListempleados(List<Empleado> Listempleados) {
+        this.Listempleados = Listempleados;
     }
 
     // constructor
@@ -84,7 +95,31 @@ public class Empresa {
     }
     //metodo para agregar empleados a la empresa
     public void agregarEmpleado(Empleado empleado) {
-        this.empleados.add(empleado);
+        if (empleado.getEmpresa() != null) {
+            System.out.println("⚠️ Este empleado ya está asignado a otra empresa.");
+            return;
+        }
+        empleado.setEmpresa(this);
+        this.Listempleados.add(empleado);
+    }
+    
+    //metodo para mostrar empleados de la empresa
+    public void mostrarEmpleados() {
+        if (Listempleados == null || Listempleados.isEmpty()) {
+            System.out.println("No hay empleados registrados en esta empresa.");
+        } else {
+            System.out.println("\n--- Empleados de " + nombre + " ---");
+            System.out.println("-----------+-----------+-----------");
+            System.out.println(" Documento | Nombre    | Sueldo/hora");
+            System.out.println("-----------+-----------+-----------");
+            for (Empleado emp : Listempleados) {
+                System.out.printf(" %-9s | %-9s | %.2f%n", 
+                    emp.getDocumento() != null ? emp.getDocumento() : "",
+                    emp.getNombre() != null ? emp.getNombre() : "",
+                    emp.getSueldoHora());
+            }
+            System.out.println("-----------+-----------+-----------");
+        }
     }
 }
 
