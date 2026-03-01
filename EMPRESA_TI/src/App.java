@@ -6,7 +6,7 @@ import modelos.Empresa;
 public class App {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-        List<Empresa> listaEmpresas = new ArrayList<>(); // Lista para almacenar las empresas registradas
+        List<Empresa> listaEmp = new ArrayList<>(); // Lista para almacenar las empresas registradas
         int opcion;
 
         do {
@@ -20,19 +20,26 @@ public class App {
 
             switch (opcion) {
                 case 1:
-                    Empresa empresa = new Empresa();
-                    empresa.ingresarEmpresa(); /// usando el metodo desde la clase empresa                    listaEmpresas.add(empresa);
-                    System.out.println("✅ Empresa registrada correctamente.");
+                    //instancia la clase en un objeto para poder usar sus metodos y atributos
+                    Empresa emp1 = new Empresa();
+                    emp1.ingresarEmpresa(sc); // Pasar el Scanner al método
+                    listaEmp.add(emp1);
+                    System.out.println("*---- Empresa registrada correctamente.---*");
                     break;
 
                 case 2:
                     System.out.println("\n📋 Empresas registradas:");
-                    if (listaEmpresas.isEmpty()) {
+                    if (listaEmp.isEmpty()) {
                         System.out.println("No hay empresas registradas.");
                     } else {
-                        for (Empresa e : listaEmpresas) {
-                            System.out.println(e);
+                        System.out.println("-----------+---------------+---------------+----------");
+                        System.out.println(" NIT       | Nombre        | Dirección     | Ciudad");
+                        System.out.println("-----------+---------------+---------------+----------");
+                        for (Empresa e : listaEmp) {
+                            e.mostrarEmpresa();
                         }
+                        System.out.println("-----------+----------+----------+----------");
+                        System.out.println("Total empresas registradas: " + listaEmp.size());
                     }
                     break;
 
@@ -43,7 +50,7 @@ public class App {
                 default:
                     System.out.println("⚠️ Opción inválida, intente nuevamente.");
             }
-        } while (opcion != 3);
+        } while (opcion != 3);  
     }
 
 

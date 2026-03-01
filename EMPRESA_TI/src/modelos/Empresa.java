@@ -44,9 +44,7 @@ public class Empresa {
 
     //metodo ingresar empresa
     // Método para ingresar datos por consola
-    public void ingresarEmpresa() {
-        Scanner sc = new Scanner(System.in);
-
+    public void ingresarEmpresa(Scanner sc) {// se utiliza el metodo scanner dentro de la funcion
         System.out.print("Ingrese NIT: ");
         this.nit = sc.nextLine();
 
@@ -65,10 +63,11 @@ public class Empresa {
         return "Empresa [NIT=" + nit + ", Nombre=" + nombre +
                ", Dirección=" + direccion + ", Ciudad=" + ciudad + "]";
     }
-
-
+    // metodo mostrar empresa en formato de fila de tabla
+    public void mostrarEmpresa() {
+        System.out.println(String.format("%-10s | %-15s | %-15s | %-10s", nit, nombre, direccion, ciudad));
     }
-
+}
 
     
 
