@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.Scanner;
+
 public class Empleado extends Empresa {
     private String documento;
     private String nombre;
@@ -25,14 +27,28 @@ public class Empleado extends Empresa {
         this.sueldoHora = sueldoHora;
     }
     
+    public Empleado() {
+    }
+
     // constructor
     public Empleado(String nit, String nombreEmpresa, String direccion, String ciudad, String documento, String nombreEmpleado, double sueldoHora) {
-        super(nit, nombreEmpresa, direccion, ciudad);
+        setNit(nit);
+        setNombre(nombreEmpresa);
+        setDireccion(direccion);
+        setCiudad(ciudad);
         this.documento = documento;
         this.nombre = nombreEmpleado;
         this.sueldoHora = sueldoHora;
     }
-
+    // metodo ingresar empleado
+    public void ingresarEmpleado(Scanner sc) {
+        System.out.print("Ingrese documento: ");
+        this.documento = sc.nextLine();
+        System.out.print("Ingrese nombre: ");
+        this.nombre = sc.nextLine();
+        System.out.print("Ingrese sueldo por hora: ");
+        this.sueldoHora = sc.nextDouble();
+    }
 
 
 

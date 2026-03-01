@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Empresa {
@@ -7,9 +9,16 @@ public class Empresa {
     private String nombre;
     private String direccion;
     private String ciudad;
+    private List<Empleado> empleados; 
+
+    public Empresa() {
+        this.empleados = new ArrayList<>();
+    }
 
 
     // getters y setters
+
+    
     public String getNit() {
         return nit;
     }
@@ -33,6 +42,12 @@ public class Empresa {
     }
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
+    }
+    public List<Empleado> getEmpleados() {
+        return empleados;
+    }
+    public void setEmpleados(List<Empleado> empleados) {
+        this.empleados = empleados;
     }
 
     // constructor
@@ -66,6 +81,10 @@ public class Empresa {
     // metodo mostrar empresa en formato de fila de tabla
     public void mostrarEmpresa() {
         System.out.println(String.format("%-10s | %-15s | %-15s | %-10s", nit, nombre, direccion, ciudad));
+    }
+    //metodo para agregar empleados a la empresa
+    public void agregarEmpleado(Empleado empleado) {
+        this.empleados.add(empleado);
     }
 }
 
