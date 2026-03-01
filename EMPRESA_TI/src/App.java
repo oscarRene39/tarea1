@@ -16,7 +16,8 @@ public class App {
             System.out.println("2. Mostrar empresas registradas");
             System.out.println("3. Ingresar empleado");
             System.out.println("4. Ver empleados");
-            System.out.println("5. Salir");
+            System.out.println("5. Buscar empleado por documento");
+            System.out.println("6. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = sc.nextInt();
             sc.nextLine(); // limpiar buffer
@@ -100,15 +101,24 @@ public class App {
                     operaciones.OperacionEmpleado operacionEmpleado = new operaciones.OperacionEmpleado();
                     operacionEmpleado.mostrarEmpleados(listaEmp);
                     break;
-
+                
                 case 5:
+                    System.out.println("👋 Buscando empleado por documento...");
+                    System.out.print("Ingrese el documento del empleado a buscar: ");
+                    String documento = sc.nextLine();
+                    operaciones.OperacionEmpleado operacionEmpleadoBuscar = new operaciones.OperacionEmpleado();
+                    operacionEmpleadoBuscar.buscarEmpleadoPorDocumento(listaEmp, documento);
+                    break;    
+
+
+                case 6:
                     System.out.println("👋 Saliendo del programa...");
                     break;
 
                 default:
                     System.out.println("⚠️ Opción inválida, intente nuevamente.");
             }
-        } while (opcion != 5);  
+        } while (opcion != 6);  
     }
 
 
